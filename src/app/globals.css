@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #A92A35;
+    --brand-secondary: #51716E;
+    --brand-bg: #F4D3B0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-800 font-sans;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#A92A35] hover:bg-[#8a2029] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-[#51716E] hover:bg-[#3f5a57] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#A92A35] text-[#A92A35] hover:bg-[#A92A35] hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+  }
+
+  .btn-outline-cream {
+    @apply border-2 border-[#F4D3B0] text-[#F4D3B0] hover:bg-[#F4D3B0] hover:text-[#A92A35] font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-gray-800 dark:text-white;
+  }
+
+  .section-subtitle {
+    @apply text-[#A92A35] dark:text-[#e06870] font-semibold text-sm uppercase tracking-widest;
+  }
+
+  /* Section backgrounds */
+  .section-maroon {
+    @apply bg-[#A92A35];
+  }
+
+  .section-cream {
+    @apply bg-[#F4D3B0];
+  }
+
+  .section-teal {
+    @apply bg-[#51716E];
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #A92A35;
+  border-radius: 3px;
+}
+
+/* Dark mode */
+.dark {
+  color-scheme: dark;
+}
+.dark body {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
