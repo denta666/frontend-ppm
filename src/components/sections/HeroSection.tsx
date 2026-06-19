@@ -81,13 +81,13 @@ export default function HeroSection() {
         >
           <div className="relative w-full aspect-square max-w-md mx-auto">
             <div className="absolute inset-0 bg-[#F4D3B0]/20 rounded-[40%_60%_60%_40%/40%_40%_60%_60%] border border-[#F4D3B0]/30" />
-            <div className="absolute inset-8 bg-white/10 rounded-[40%_60%_60%_40%/40%_40%_60%_60%] flex items-center justify-center backdrop-blur-sm overflow-hidden">
+            <div className="absolute inset-8 rounded-[40%_60%_60%_40%/40%_40%_60%_60%] overflow-hidden">
               <Image
-                src="/logo.png"
-                alt="Logo Warkop Semesta Bahagia"
-                width={180}
-                height={180}
-                className="object-contain opacity-90"
+                src="/image/profil.png"
+                alt="Foto Warkop Semesta Bahagia"
+                fill
+                sizes ="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
               />
             </div>
             {/* Floating cards */}
