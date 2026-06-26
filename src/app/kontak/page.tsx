@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone, Instagram, MessageCircle, Loader2, Send } from 'lucide-react';
-import { contactService } from '@/services/contact.service';
+import { ContactService } from '@/services/contact.service';
 import ToastContainer from '@/components/shared/ToastContainer';
 import { useToast } from '@/hooks/useToast';
 
@@ -20,7 +20,7 @@ export default function KontakPage() {
     }
     setLoading(true);
     try {
-      await contactService.send(form);
+      await ContactService.send(form);
       addToast('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
       setForm({ name: '', email: '', message: '' });
     } catch {
@@ -122,21 +122,21 @@ export default function KontakPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 dark:text-white text-sm mb-1">Telepon / WA</p>
-                    <a href="https://wa.me/6289999999999" className="text-sm text-[#A92A35] hover:underline">+62 899-9999-999</a>
+                    <a href="https://wa.me/6282262752221" className="text-sm text-[#A92A35] hover:underline">+62 822-6275-2221</a>
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <a
-                  href="https://wa.me/6289999999999?text=Halo+Warkop+Semesta+Bahagia!"
+                  href="https://wa.me/6282262752221?text=Halo+Warkop+Semesta+Bahagia!"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1da851] text-white font-semibold py-3 rounded-xl transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </a>
                 <a
-                  href="https://instagram.com/warkopsemesta"
+                  href="https://www.instagram.com/warkopsemestabahagia?igsh=NGMzYXZweDY5dzN3"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold py-3 rounded-xl transition-opacity"
                 >

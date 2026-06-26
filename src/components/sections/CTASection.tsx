@@ -28,7 +28,7 @@ export default function CTASection() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/6289999999999?text=Halo+Warkop+Semesta+Bahagia!+Saya+ingin+bertanya."
+              href="https://wa.me/6282262752221?text=Halo+Warkop+Semesta+Bahagia!+Saya+ingin+bertanya."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#F4D3B0] hover:bg-[#ecc898] text-[#A92A35] font-bold px-6 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 flex items-center gap-2"
@@ -36,7 +36,7 @@ export default function CTASection() {
               <MessageCircle className="w-4 h-4" /> Chat WhatsApp
             </a>
             <a
-              href="https://instagram.com/warkopsemesta"
+              href="https://www.instagram.com/warkopsemestabahagia?igsh=NGMzYXZweDY5dzN3"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold px-6 py-3 rounded-xl transition-all flex items-center gap-2"

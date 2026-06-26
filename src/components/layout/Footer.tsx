@@ -41,7 +41,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#A92A35] shrink-0" />
-                <a href="https://wa.me/6289999999999" className="hover:text-white transition-colors">+62 899-9999-999</a>
+                <a href="https://wa.me/6282262752221" className="hover:text-white transition-colors">+62 822-6275-2221</a>
               </li>
             </ul>
           </div>
@@ -67,7 +67,7 @@ export default function Footer() {
             </ul>
             <div className="mt-4 flex gap-3">
               <a
-                href="https://instagram.com/warkopsemesta"
+                href="https://www.instagram.com/warkopsemestabahagia?igsh=NGMzYXZweDY5dzN3"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-gray-800 hover:bg-[#A92A35] rounded-lg flex items-center justify-center transition-colors"
@@ -76,7 +76,7 @@ export default function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/6289999999999"
+                href="https://wa.me/6282262752221"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-gray-800 hover:bg-[#25D366] rounded-lg flex items-center justify-center transition-colors"

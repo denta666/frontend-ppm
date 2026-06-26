@@ -11,4 +11,9 @@ export const reviewService = {
     const response = await api.post('/reviews', data);
     return response.data;
   },
+
+  async delete(id: string): Promise<ApiResponse<unknown>> {
+    const response = await api.delete(`/reviews/${id}`);
+    return response.data;
+  },
 };

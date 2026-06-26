@@ -1,25 +1,38 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Search, X } from 'lucide-react';
-import { menuItems, menuCategories } from '@/data/menu';
+import { menuService, MenuDB } from '@/services/menu.service';
 import { formatPrice, cn } from '@/lib/utils';
 
+const menuCategories = [
+  { value: 'semua', label: 'Semua' },
+  { value: 'kopi', label: 'Kopi' },
+  { value: 'non-kopi', label: 'Non Kopi' },
+  { value: 'makanan', label: 'Makanan' },
+  { value: 'snack', label: 'Snack' },
+];
+
 export default function MenuPage() {
+  const [menus, setMenus] = useState<MenuDB[]>([]);
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('semua');
 
+  useEffect(() => {
+    menuService.getAll().then(setMenus).catch(() => {});
+  }, []);
+
   const filtered = useMemo(() => {
-    return menuItems.filter((item) => {
+    return menus.filter((item) => {
       const matchSearch =
         item.name.toLowerCase().includes(search.toLowerCase()) ||
         item.description.toLowerCase().includes(search.toLowerCase());
       const matchCat = activeCategory === 'semua' || item.category === activeCategory;
       return matchSearch && matchCat;
     });
-  }, [search, activeCategory]);
+  }, [menus, search, activeCategory]);
 
   return (
     <div className="pt-16">
