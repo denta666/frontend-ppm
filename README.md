@@ -16,7 +16,7 @@ Pastikan sudah terinstall:
 ## 1. Clone / Download Project
 
 ```bash
-git clone <url-repo>
+git clone https://github.com/denta666/frontend-ppm
 cd webprofil-cafe-warkop-semesta-bahagia
 ```
 
