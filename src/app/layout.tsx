@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-// @ts-expect-error Next.js handles CSS imports without a declaration file in this project
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
