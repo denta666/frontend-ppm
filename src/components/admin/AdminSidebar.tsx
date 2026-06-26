@@ -12,6 +12,7 @@ const navItems = [
   { href: '/admin/kontak', label: 'Pesan Kontak', icon: Mail },
   { href: '/admin/testimoni', label: 'Testimoni', icon: MessageSquare },
   { href: '/admin/menu', label: 'Kelola Menu', icon: Coffee },
+  { href: '/admin/galeri', label: 'Galeri', icon: LayoutDashboard },
 ];
 
 export default function AdminSidebar() {

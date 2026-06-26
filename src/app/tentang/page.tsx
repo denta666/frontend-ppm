@@ -70,7 +70,7 @@ export default function TentangPage() {
             </p>
             <p className="leading-relaxed">
               Dengan rating Google <strong className="text-[#A92A35]">4.3</strong> dan rentang harga{' '}
-              <strong className="text-[#A92A35]">Rp1.000 – Rp25.000</strong>,
+              <strong className="text-[#A92A35]">Rp15.000 – Rp30.000</strong>,
               kami berkomitmen untuk terus menjadi pilihan utama warga Slawi dan sekitarnya ketika ingin
               menikmati kopi, mengerjakan tugas, berdiskusi bisnis, atau sekadar menghabiskan waktu santai.
             </p>

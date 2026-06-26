@@ -1,20 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { X, ZoomIn } from 'lucide-react';
-import { galleryItems } from '@/data/gallery';
 
 const categories = ['Semua', 'Suasana', 'Minuman', 'Makanan', 'Fasilitas'];
 
+interface GalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  image: string; // URL dari Supabase Storage
+}
+
 export default function GaleriPage() {
-  const [selected, setSelected] = useState<typeof galleryItems[0] | null>(null);
+  const [items, setItems] = useState<GalleryItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState<GalleryItem | null>(null);
   const [activeCategory, setActiveCategory] = useState('Semua');
 
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/gallery`)
+      .then(res => res.json())
+      .then(data => {
+        // response formatnya: { data: [...] }
+        setItems(data.data || []);
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
   const filtered = activeCategory === 'Semua'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === activeCategory);
+    ? items
+    : items.filter(item => item.category === activeCategory);
 
   return (
     <div className="pt-16">
@@ -52,36 +71,45 @@ export default function GaleriPage() {
             ))}
           </div>
 
-          {/* Grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {filtered.map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.06 }}
-                className="relative overflow-hidden rounded-2xl group cursor-pointer break-inside-avoid"
-                onClick={() => setSelected(item)}
-              >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={600}
-                  height={400}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-[#A92A35]/0 group-hover:bg-[#A92A35]/60 transition-colors duration-300 flex items-center justify-center">
-                  <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-sm font-medium">{item.alt}</p>
-                  <span className="text-[#F4D3B0] text-xs">{item.category}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* Loading */}
+          {loading && (
+            <div className="text-center py-20">
+              <p className="text-gray-400 animate-pulse">Memuat foto...</p>
+            </div>
+          )}
 
-          {filtered.length === 0 && (
+          {/* Grid */}
+          {!loading && (
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+              {filtered.map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06 }}
+                  className="relative overflow-hidden rounded-2xl group cursor-pointer break-inside-avoid"
+                  onClick={() => setSelected(item)}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={600}
+                    height={400}
+                    className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#A92A35]/0 group-hover:bg-[#A92A35]/60 transition-colors duration-300 flex items-center justify-center">
+                    <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-sm font-medium">{item.title}</p>
+                    <span className="text-[#F4D3B0] text-xs">{item.category}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {!loading && filtered.length === 0 && (
             <div className="text-center py-20">
               <p className="text-4xl mb-3">🖼️</p>
               <p className="text-gray-500 font-medium">Tidak ada foto di kategori ini</p>
@@ -113,9 +141,9 @@ export default function GaleriPage() {
               >
                 <X className="w-5 h-5 text-[#A92A35]" />
               </button>
-              <Image src={selected.src} alt={selected.alt} width={900} height={600} className="w-full rounded-2xl object-cover" />
+              <Image src={selected.image} alt={selected.title} width={900} height={600} className="w-full rounded-2xl object-cover" />
               <div className="mt-4 text-center">
-                <p className="text-white font-medium">{selected.alt}</p>
+                <p className="text-white font-medium">{selected.title}</p>
                 <span className="text-[#F4D3B0] text-sm">{selected.category}</span>
               </div>
             </motion.div>
