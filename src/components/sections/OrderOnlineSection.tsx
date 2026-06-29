@@ -15,7 +15,7 @@ const platforms = [
         <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="22" fontWeight="bold" fontFamily="Arial">Go</text>
       </svg>
     ),
-    link: 'https://gofood.co.id',
+    link: 'https://gofood.link/a/S1Umk9d',
   },
   {
     name: 'GrabFood',
@@ -28,7 +28,7 @@ const platforms = [
         <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold" fontFamily="Arial">Grab</text>
       </svg>
     ),
-    link: 'https://food.grab.com',
+    link: 'https://food.grab.com/id/en/restaurant/online-delivery/6-C7WBLBTBC2DXC2?sourceID=20260629_165303_A371996386474B609DB83E2162D865C6_MEXMPS',
   },
   {
     name: 'ShopeeFood',
@@ -41,7 +41,7 @@ const platforms = [
         <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="Arial">SPF</text>
       </svg>
     ),
-    link: 'https://shopeefood.co.id',
+    link: 'https://shopee.co.id/universal-link/now-food/shop/22593289?deep_and_deferred=1&shareChannel=copy_link',
   },
 ];
 

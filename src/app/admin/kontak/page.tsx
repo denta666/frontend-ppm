@@ -3,36 +3,35 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2, Trash2, Mail, Search } from 'lucide-react';
-import { ContactService} from '@/services/contact.service';
+import { ContactService } from '@/services/contact.service';
 import ToastContainer from '@/components/shared/ToastContainer';
 import { useToast } from '@/hooks/useToast';
 import { formatDate } from '@/lib/utils';
 
-
 export default function AdminKontakPage() {
   const [contacts, setContacts] = useState<{
-  id: string;
-  name: string;
-  email: string;
-  message: string;
-  createdAt: string;
-}[]>([]);
+    id: string;
+    name: string;
+    email: string;
+    message: string;
+    createdAt: string;
+  }[]>([]);
 
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const { toasts, addToast, removeToast } = useToast();
 
-const fetchData = () => {
-  setLoading(true);
+  const fetchData = () => {
+    setLoading(true);
 
-ContactService.getAll()
-  .then((res) => {
-    setContacts(res.data);
-  })
-    .catch(() => addToast('Gagal memuat data kontak.', 'error'))
-    .finally(() => setLoading(false));
-};
+    ContactService.getAll()
+      .then((res) => {
+        setContacts(res);
+      })
+      .catch(() => addToast('Gagal memuat data kontak.', 'error'))
+      .finally(() => setLoading(false));
+  };
 
   useEffect(() => {
     fetchData();
@@ -52,15 +51,14 @@ ContactService.getAll()
     }
   };
 
-const filtered = Array.isArray(contacts)
-  ? contacts.filter(
-      (contact) =>
-        contact.name.toLowerCase().includes(search.toLowerCase()) ||
-        contact.email.toLowerCase().includes(search.toLowerCase()) ||
-        contact.message.toLowerCase().includes(search.toLowerCase())
-    )
-  : [];
-
+  const filtered = Array.isArray(contacts)
+    ? contacts.filter(
+        (contact) =>
+          contact.name.toLowerCase().includes(search.toLowerCase()) ||
+          contact.email.toLowerCase().includes(search.toLowerCase()) ||
+          contact.message.toLowerCase().includes(search.toLowerCase())
+      )
+    : [];
 
   return (
     <div>
