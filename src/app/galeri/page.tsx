@@ -25,11 +25,10 @@ export default function GaleriPage() {
           setItems(
             staticGalleryItems.map((g) => ({
               id: String(g.id),
-              alt: g.alt,
+              title: g.alt,
               category: g.category,
               image: g.src,
               createdAt: '',
-              updatedAt: '',
             }))
           );
         }
@@ -38,11 +37,10 @@ export default function GaleriPage() {
         setItems(
           staticGalleryItems.map((g) => ({
             id: String(g.id),
-            alt: g.alt,
+            title: g.alt,
             category: g.category,
             image: g.src,
             createdAt: '',
-            updatedAt: '',
           }))
         );
       })
@@ -111,7 +109,7 @@ export default function GaleriPage() {
                 >
                   <Image
                     src={item.image}
-                    alt={item.alt}
+                    alt={item.title}
                     width={600}
                     height={400}
                     className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -120,7 +118,7 @@ export default function GaleriPage() {
                     <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white text-sm font-medium">{item.alt}</p>
+                    <p className="text-white text-sm font-medium">{item.title}</p>
                     <span className="text-[#F4D3B0] text-xs">{item.category}</span>
                   </div>
                 </motion.div>
@@ -153,9 +151,9 @@ export default function GaleriPage() {
               >
                 <X className="w-5 h-5 text-[#A92A35]" />
               </button>
-              <Image src={selected.image} alt={selected.alt} width={900} height={600} className="w-full rounded-2xl object-cover" />
+              <Image src={selected.image} alt={selected.title} width={900} height={600} className="w-full rounded-2xl object-cover" />
               <div className="mt-4 text-center">
-                <p className="text-white font-medium">{selected.alt}</p>
+                <p className="text-white font-medium">{selected.title}</p>
                 <span className="text-[#F4D3B0] text-sm">{selected.category}</span>
               </div>
             </motion.div>
